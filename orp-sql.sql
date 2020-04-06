@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `health` int(11) NOT NULL DEFAULT 0,
   `armor` int(11) NOT NULL DEFAULT 0,
   `isdead` int(11) NOT NULL DEFAULT 0,
-  `sex` varchar(50) NOT NULL,
+  `sex` varchar(50) NOT NULL DEFAULT '',
   `inventory` longtext NOT NULL DEFAULT '[]',
   PRIMARY KEY (`steamid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
