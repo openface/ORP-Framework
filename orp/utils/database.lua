@@ -14,7 +14,7 @@ sql = false
 local SQL_HOST = "localhost"
 local SQL_PORT = 3306
 local SQL_USER = "root"
-local SQL_PASS = ""
+local SQL_PASS = "password"
 local SQL_DATA = "orp"
 local SQL_CHAR = "utf8mb4"
 local SQL_LOGL = "error"
@@ -44,5 +44,10 @@ local function OnPackageStop()
 	mariadb_close(sql)
 end
 AddEvent("OnPackageStop", OnPackageStop)
+
+function GetDB()
+	return sql
+end
+AddFunctionExport("GetDB", GetDB)
 
 -- ALTER TABLE log_chat ADD FOREIGN KEY (id) REFERENCES accounts (id) ON UPDATE CASCADE ON DELETE CASCADE;
