@@ -29,6 +29,8 @@ SAVE_DEAD = true -- Whether or not the player should spawn dead if they logged o
 
 AUTO_SAVE_TIMER = 300000 -- How often players data should automatically save in ms | Default: 5 Minutes
 
+AUTO_START_PACKAGES = true -- Whether or not O:RP should automatically start any packages | Must be named orp_<packagename> EX: orp_vehicles | This is experimental, it may not work
+
 SHOW_NAME_TAG = true -- Whether or not name tags above players show
 SHOW_HEALTH_TAG = true -- Whether or not health tags above players show
 SHOW_ARMOR_TAG = true -- Whether or not armor tags above players show

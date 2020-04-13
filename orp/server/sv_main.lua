@@ -4,6 +4,11 @@ AddEvent("OnPackageStart", function()
 	print("O:RP - Made by Dimmies | v" .. ORP_VERSION)
 	print("-------------------------------")
 	print("")
+
+	if AUTO_START_PACKAGES == true then
+		if DEBUG_MODE == true then print("AUTO_START_PACKAGES Enabled, Starting all ORP packages!") end
+		AutoLoadPackages()
+	end
 end)
 
 PlayerData = {}
@@ -202,10 +207,19 @@ end
 AddRemoteEvent("UpdatePlayerData", UpdatePlayerData)
 AddFunctionExport("UpdatePlayerData", UpdatePlayerData)
 
-function GetPlayerData(player)
-	return PlayerData[player]
+function AutoLoadPackages()
+	dir = "packages" -- Directory to where all of your packages are. You shouldn't need to change this
+    local i, t, popen = 0, {}, io.popen
+    for filename in popen('dir "'..dir..'" /b'):lines() do
+		if string.match(filename, "orp_") then
+			StartPackage(filename)
+			if DEBUG_MODE == true then print("Auto-Started " .. filename) end
+		end
+        i = i + 1
+        t[i] = filename
+    end
+    return t
 end
-AddFunctionExport("GetPlayerData", GetPlayerData)
 
 -- Weather/Time Timer w/ Sync
 local currentTime = 8
